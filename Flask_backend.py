@@ -35,7 +35,7 @@ def upload_image():
 
             # deleting images
             # if running on windows
-            system("del *.*")
+            system("del *.* /Q")
             system("Y")
             # if linux
             # system("rm /image_bin/*")
