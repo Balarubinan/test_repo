@@ -25,6 +25,7 @@ def upload_image():
                 os.chdir("image_bin")
             # updating directory
             system(f"git pull f{repo_path}")
+            system("dir")
             f = request.files['image']
             f.save(secure_filename(f.filename))
             # executing git commands
@@ -40,6 +41,7 @@ def upload_image():
             # system("rm /image_bin/*")
             return {"request_status": "Success"}
     except(Exception) as e:
+        print("Here",e)
         return {"status": "okay"}
 
 
