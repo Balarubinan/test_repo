@@ -5,6 +5,7 @@ from threading import Thread
 from os import system
 from testfolder.config import *
 from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'raj'
@@ -16,7 +17,8 @@ def upload_image():
             if "image" not in request.files:
                 print("No image file")
                 return {"status":"failed"}
-            system("cd image_bin")
+            # system("cd image_bin")
+            os.chdir("image_bin")
             system("cd")
             system(f"git pull f{repo_path}")
             f=request.files['image']
