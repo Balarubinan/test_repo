@@ -15,6 +15,8 @@ def upload_image():
         if "image" not in request.files:
             print("No image file")
             return {"status":"failed"}
+        system("cd image_bin")
+        system(f"git pull f{repo_path}")
         f=request.files['image']
         f.save(secure_filename(f.filename))
         command_list = ["git add --all", 'git commit -m "images added"', f"git push --set-upstream {repo_path} master"]
