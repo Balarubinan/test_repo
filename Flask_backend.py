@@ -39,7 +39,7 @@ def upload_image():
             # if linux
             # system("rm /image_bin/*")
             return {"request_status": "Success"}
-    except(TypeError) as e:
+    except(Exception) as e:
         return {"status": "okay"}
 
 
