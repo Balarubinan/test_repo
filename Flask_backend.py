@@ -36,7 +36,6 @@ def upload_image():
             # deleting images
             # if running on windows
             system("del *.* /Q")
-            system("Y")
             # if linux
             # system("rm /image_bin/*")
             return {"request_status": "Success"}

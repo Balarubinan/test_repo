@@ -3,5 +3,5 @@ from os import system
 # make sure github is logged in
 repo_path="https://github.com/Balarubinan/test_repo"
 # init a directory
-system("git init")
+# system("git init")
 
