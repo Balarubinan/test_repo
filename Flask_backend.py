@@ -21,7 +21,7 @@ def upload_image():
             # system("cd image_bin")
             system("cd")
             # checking current directory
-            if os.curdir != "image_bin":
+            if not os.getcwd().endswith("image_bin"):
                 os.chdir("image_bin")
             # updating directory
             system(f"git pull f{repo_path}")
@@ -39,6 +39,7 @@ def upload_image():
             system("del *.* /Q")
             # if linux
             # system("rm /image_bin/*")
+            os.system("cd /")
             return {"request_status": "Success"}
     except(Exception) as e:
         print("Here",e)
