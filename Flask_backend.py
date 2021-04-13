@@ -24,6 +24,7 @@ def upload_image():
             command_list = ["git add --all", 'git commit -m "images added"', f"git push --set-upstream {repo_path} master"]
             for command in command_list:
                 system(command)
+            return {"request_status": "Success"}
     except(TypeError) as e:
         return {"status":"okay"}
 
