@@ -18,8 +18,10 @@ def upload_image():
                 print("No image file")
                 return {"status":"failed"}
             # system("cd image_bin")
-            os.chdir("image_bin")
+
             system("cd")
+            if os.curdir!="image_bin":
+                os.chdir("image_bin")
             system(f"git pull f{repo_path}")
             f=request.files['image']
             f.save(secure_filename(f.filename))
