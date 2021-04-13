@@ -11,18 +11,21 @@ app.config['SECRET_KEY'] = 'raj'
 
 @app.route('/upload_image', methods=['POST', 'GET'])
 def upload_image():
-    if request.method=="POST":
-        if "image" not in request.files:
-            print("No image file")
-            return {"status":"failed"}
-        system("cd image_bin")
-        system(f"git pull f{repo_path}")
-        f=request.files['image']
-        f.save(secure_filename(f.filename))
-        command_list = ["git add --all", 'git commit -m "images added"', f"git push --set-upstream {repo_path} master"]
-        for command in command_list:
-            system(command)
-
+    try:
+        if request.method=="POST":
+            if "image" not in request.files:
+                print("No image file")
+                return {"status":"failed"}
+            system("cd image_bin")
+            system("pwd")
+            system(f"git pull f{repo_path}")
+            f=request.files['image']
+            f.save(secure_filename(f.filename))
+            command_list = ["git add --all", 'git commit -m "images added"', f"git push --set-upstream {repo_path} master"]
+            for command in command_list:
+                system(command)
+    except(TypeError) as e:
+        return {"status":"okay"}
 
 @app.route('/get_image_list', methods=['POST', 'GET'])
 def image_list():
